@@ -895,15 +895,16 @@ func buildTableBlock(tableLines []string) map[string]interface{} {
 		return nil
 	}
 
+	// Notion API requires table_row children INSIDE table{}, not at block top-level.
 	return map[string]interface{}{
 		"object": "block",
 		"type":   "table",
 		"table": map[string]interface{}{
-			"table_width":      tableWidth,
+			"table_width":       tableWidth,
 			"has_column_header": true,
-			"has_row_header":   false,
+			"has_row_header":    false,
+			"children":          rows,
 		},
-		"children": rows,
 	}
 }
 

@@ -230,9 +230,9 @@ func TestParseMarkdownTable(t *testing.T) {
 				if tableData["has_column_header"] != true {
 					t.Errorf("has_column_header should be true")
 				}
-				children, ok := b["children"].([]map[string]interface{})
+				children, ok := tableData["children"].([]map[string]interface{})
 				if !ok {
-					t.Fatal("missing children")
+					t.Fatal("missing table.children")
 				}
 				// header + 2 data rows = 3 rows (separator skipped)
 				if len(children) != 3 {
@@ -256,7 +256,7 @@ func TestParseMarkdownTable(t *testing.T) {
 				if tableData["table_width"] != 3 {
 					t.Errorf("table_width = %v, want 3", tableData["table_width"])
 				}
-				children := b["children"].([]map[string]interface{})
+				children := tableData["children"].([]map[string]interface{})
 				if len(children) != 2 { // header + 1 data row
 					t.Errorf("got %d rows, want 2", len(children))
 				}
