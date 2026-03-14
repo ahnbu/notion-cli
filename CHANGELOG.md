@@ -4,4 +4,4 @@
 
 | 일시 | 유형 | 범위 | 변경내용 (목적 포함) |
 |---|---|---|---|
-| YYYY-MM-DD HH:mm | feat/fix/refactor/docs/chore/other | area-or-folder | 변경 요약 — 변경 이유·목적 |
+| 2026-03-14 19:52 | feat | block | GFM 테이블 파싱 + 인라인 서식(bold/italic/code/link/strike) 지원 추가 — 노션 CLI로 마크다운 표 업로드 시 깨지던 문제 근본 해결 |
