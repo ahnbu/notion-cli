@@ -348,7 +348,12 @@ Examples:
 
 		// Check 1: Config file
 		cfg, err := config.Load()
-		if err != nil || cfg.Token == "" {
+		profile := cfg.GetCurrentProfile()
+		token := cfg.Token
+		if token == "" && profile != nil {
+			token = profile.Token
+		}
+		if err != nil || token == "" {
 			fmt.Println("  ✗ Config: no token found")
 			fmt.Println("    Run: notion auth login --with-token")
 			return nil
@@ -356,7 +361,7 @@ Examples:
 		fmt.Println("  ✓ Config: token found")
 
 		// Check 2: Token validity
-		c := client.New(cfg.Token)
+		c := client.New(token)
 		me, err := c.GetMe()
 		if err != nil {
 			fmt.Printf("  ✗ Auth: token is invalid (%v)\n", err)
